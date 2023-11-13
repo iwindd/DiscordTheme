@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "postcss src/__build.css -o ../theme.theme.css",
-    "build-prod": "postcss --env production src/__build.css -o ../theme.theme.css",
-    "dev": "postcss src/__build.css -o ../theme.theme.css --watch"
+    "build": "npx gulp build-prod",
+    "dev": "npx gulp dev"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^2.0.0",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "postcss-csso": "^6.0.1",
     "postcss-easy-import": "^4.0.0"
+  },
+  "dependencies": {
+    "gulp-postcss": "^9.0.1",
+    "gulp-sourcemaps": "^3.0.0"
   }
 }

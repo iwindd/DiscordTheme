@@ -1,3 +1,13 @@
+@import './components/chat.css';
+
+*{
+  font-family: 'Athiti', sans-serif !important;
+}
+
 :root {
   --background-tertiary: #333333;
+}
+
+.text{
+  color: white;
 }
