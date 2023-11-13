@@ -16,7 +16,12 @@ gulp.task('build-css', function () {
 gulp.task('add-comments', function () {
   return gulp
     .src('dist/index.css') 
-    .pipe(insert.prepend("/*\n * @name discord\n * @author iwindd\n * @description -\n * @version 0.0.1\n*/\n\n"))
+    .pipe(insert.prepend(`/**
+    * @name discord
+    * @author iwindd
+    * @description none
+    * @version 0.0.1
+    */`))
     .pipe(rename('discord.theme.css'))
     .pipe(gulp.dest('../'));
 });
