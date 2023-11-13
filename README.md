@@ -14,3 +14,4 @@
 + package.description -> theme description
 + package.version -> theme version
 + package.author -> theme author
++ package.path -> theme build path
