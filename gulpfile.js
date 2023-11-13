@@ -1,33 +1,23 @@
 const gulp = require('gulp');
-const postcss = require('gulp-postcss');
-const sourcemaps = require('gulp-sourcemaps');
 const insert = require('gulp-insert');
 const rename = require('gulp-rename');
+const postcss = require('gulp-postcss');
+const package = require('./package.json');
 
-gulp.task('build-css', function () {
+gulp.task('build', () => {
   return gulp
     .src('src/index.css')
-    .pipe(sourcemaps.init())
-    .pipe(postcss()) 
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('add-comments', function () {
-  return gulp
-    .src('dist/index.css') 
+    .pipe(postcss())
     .pipe(insert.prepend(`/**
-    * @name discord
-    * @author iwindd
-    * @description none
-    * @version 0.0.1
-    */`))
-    .pipe(rename('discord.theme.css'))
-    .pipe(gulp.dest('../'));
+    * @name ${package.title}
+    * @author ${package.author}
+    * @description ${package.description}
+    * @version ${package.version}
+    */ \n\n\n`))
+    .pipe(rename(`${package.name}.theme.css`))
+    .pipe(gulp.dest(package.path));
 });
 
-gulp.task('dev', function () {
-  gulp.watch('src/index.css', gulp.series('build-css', 'add-comments'));
+gulp.task('dev', () => {
+  gulp.watch('src/**/*.css', gulp.series('build'));
 });
-
-gulp.task('build', gulp.series('build-css', 'add-comments'));
